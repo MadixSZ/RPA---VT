@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de Recibos</title>
+    <style>
+        .container {
+            max-width: 500px;
+            margin: 20px auto;
+            padding: 15px;
+            font-family: Arial, sans-serif;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="file"],
+        input[type="month"],
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .checkbox-group {
+            margin: 15px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .submit-btn {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            cursor: pointer;
+            width: 100%;
+            border-radius: 4px;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: #0056b3;
+        }
+
+        .instructions {
+            margin-top: 20px;
+            color: #666;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h2>Gerador de Recibos de VT</h2>
+            <p>Centro Médico Com Vida</p>
+        </div>
+
+        <!-- Formulário Corrigido -->
+        <form method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label>Arquivo CSV</label>
+                <input type="file" name="planilha" accept=".csv" required>
+                <small>Formato: nome, data_admissao, valor_conducao</small>
+            </div>
+
+            <div class="form-group">
+                <label>Mês de Referência</label>
+                <input type="month" name="mes_referencia" required>
+            </div>
+
+            <div class="form-group">
+                <label>Feriados (opcional)</label>
+                <input type="text" name="feriados" placeholder="Ex: 25/12, 01/01">
+                <small>Formato: DD/MM separados por vírgula</small>
+            </div>
+
+            <div class="checkbox-group">
+                <input type="checkbox" name="sabados_alternados" id="sabados">
+                <label for="sabados">Sábados Alternados</label>
+            </div>
+
+            <button type="submit" class="submit-btn">Gerar Recibos</button>
+        </form>
+
+        <div class="instructions">
+            <p>✅ Formato CSV obrigatório</p>
+            <p>✅ Datas no formato AAAA-MM-DD</p>
+            <p>✅ Valores com ponto decimal (ex: 5.50)</p>
+        </div>
+    </div>
+</body>
+</html>

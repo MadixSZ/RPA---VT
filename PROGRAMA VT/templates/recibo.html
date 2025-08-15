@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        /* ... (mantenha o CSS anterior) ... */
+    </style>
+</head>
+<body>
+    <h1 class="titulo">RECIBO</h1>
+    <h2 class="titulo" style="font-size: 18px;">Entrega Vale-Transporte</h2>
+
+    <div class="detalhes">
+        <p class="destaque"><strong>Empregador(a):</strong> CENTRO MÉDICO COM VIDA</p>
+        <p class="destaque"><strong>Empregado(a):</strong> {{ nome }}</p>
+        
+        <p class="valor">
+            Recebi R$ {{ "%.2f"|format(total) }} ({{ total_extenso }})
+            Referente a {{ dias }} dias úteis do mês de {{ mes_portugues }} de {{ ano_ref }}.
+        </p>
+
+        <p>São Paulo, {{ data_emissao 
+            .replace('January', 'janeiro')
+            .replace('February', 'fevereiro')
+            .replace('March', 'março')
+            .replace('April', 'abril')
+            .replace('May', 'maio')
+            .replace('June', 'junho')
+            .replace('July', 'julho')
+            .replace('August', 'agosto')
+            .replace('September', 'setembro')
+            .replace('October', 'outubro')
+            .replace('November', 'novembro')
+            .replace('December', 'dezembro') }}.
+        </p>
+    </div>
+
+    <div class="assinatura">
+        ___________________________<br>
+        Assinatura do Empregado
+    </div>
+</body>
+</html>
