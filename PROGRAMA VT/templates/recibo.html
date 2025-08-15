@@ -1,43 +1,54 @@
-<!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recibo VT</title>
     <style>
-        /* ... (mantenha o CSS anterior) ... */
+        body { font-family: Arial, Helvetica, sans-serif; color: #111; padding: 40px; }
+        .recibo { max-width: 800px; margin: 0 auto; border: 1px solid #ddd; padding: 30px; border-radius: 8px; }
+        .cabecalho { text-align: center; margin-bottom: 20px; }
+        .cabecalho h1 { margin-bottom: 4px; font-size: 22px; }
+        .cabecalho h2 { margin-top: 0; font-size: 14px; font-weight: normal; color: #555; }
+
+        .detalhes { margin-top: 10px; line-height: 1.6; }
+        .destaque { font-weight: 700; }
+
+        .valor { margin: 18px 0; font-size: 18px; }
+        .assinatura { margin-top: 36px; text-align: center; }
+        .linha-assinatura { margin-top: 18px; border-top: 1px solid #000; width: 240px; margin-left: auto; margin-right: auto; }
+
+        @media print {
+            body { padding: 10px; }
+            .recibo { border: none; }
+        }
     </style>
 </head>
 <body>
-    <h1 class="titulo">RECIBO</h1>
-    <h2 class="titulo" style="font-size: 18px;">Entrega Vale-Transporte</h2>
+    <div class="recibo">
+        <div class="cabecalho">
+            <h1>RECIBO</h1>
+            <h2>Entrega Vale-Transporte</h2>
+            <div style="font-size:12px;color:#666;">CENTRO MÉDICO COM VIDA</div>
+        </div>
 
-    <div class="detalhes">
-        <p class="destaque"><strong>Empregador(a):</strong> CENTRO MÉDICO COM VIDA</p>
-        <p class="destaque"><strong>Empregado(a):</strong> {{ nome }}</p>
-        
-        <p class="valor">
-            Recebi R$ {{ "%.2f"|format(total) }} ({{ total_extenso }})
-            Referente a {{ dias }} dias úteis do mês de {{ mes_portugues }} de {{ ano_ref }}.
-        </p>
+        <div class="detalhes">
+            <p class="destaque">Empregador(a): <span style="font-weight:normal;">CENTRO MÉDICO COM VIDA</span></p>
+            <p class="destaque">Empregado(a): <span style="font-weight:normal;">{{ nome }}</span></p>
 
-        <p>São Paulo, {{ data_emissao 
-            .replace('January', 'janeiro')
-            .replace('February', 'fevereiro')
-            .replace('March', 'março')
-            .replace('April', 'abril')
-            .replace('May', 'maio')
-            .replace('June', 'junho')
-            .replace('July', 'julho')
-            .replace('August', 'agosto')
-            .replace('September', 'setembro')
-            .replace('October', 'outubro')
-            .replace('November', 'novembro')
-            .replace('December', 'dezembro') }}.
-        </p>
-    </div>
+            <p class="valor">
+                Recebi R$ {{ "%.2f"|format(total) }} ({{ total_extenso }})
+                referente a {{ dias }} dias úteis do mês de {{ mes_portugues }} de {{ ano_ref }}.
+            </p>
 
-    <div class="assinatura">
-        ___________________________<br>
-        Assinatura do Empregado
+            <p>
+                São Paulo, {{ data_emissao }}.
+            </p>
+        </div>
+
+        <div class="assinatura">
+            <div class="linha-assinatura"></div>
+            <div style="margin-top:8px;">Assinatura do Empregado</div>
+        </div>
     </div>
 </body>
 </html>
