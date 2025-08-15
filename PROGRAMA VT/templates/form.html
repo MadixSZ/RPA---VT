@@ -75,12 +75,13 @@
             <p>Centro Médico Com Vida</p>
         </div>
 
-        <!-- Formulário Corrigido -->
+        <!-- Formulário -->
         <form method="POST" enctype="multipart/form-data">
             <div class="form-group">
                 <label>Arquivo CSV</label>
                 <input type="file" name="planilha" accept=".csv" required>
-                <small>Formato: nome, data_admissao, valor_conducao</small>
+                <small>Formato mínimo obrigatório: nome, data_admissao, valor_conducao
+                (opcional: data_saida).</small>
             </div>
 
             <div class="form-group">
@@ -103,9 +104,10 @@
         </form>
 
         <div class="instructions">
-            <p>✅ Formato CSV obrigatório</p>
-            <p>✅ Datas no formato AAAA-MM-DD</p>
+            <p>✅ CSV pode ter a coluna opcional <code>data_saida</code> (formato AAAA-MM-DD). Se preenchida e dentro do mês, o cálculo do VT será limitado até essa data.</p>
+            <p>✅ Datas no CSV: <strong>AAAA-MM-DD</strong></p>
             <p>✅ Valores com ponto decimal (ex: 5.50)</p>
+            <p>Exemplo de cabeçalho aceito: <code>nome,data_admissao,valor_conducao,data_saida</code></p>
         </div>
     </div>
 </body>
